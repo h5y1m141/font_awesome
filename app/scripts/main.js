@@ -45,7 +45,7 @@ $(document).on({
     };
     cssStyle = {
       position: 'absolute',
-      left: offset.left - 180,
+      left: offset.left - 200,
       top: offset.top - 500,
       width: 400,
       height: 300,
@@ -62,14 +62,31 @@ $(document).on({
   }
 }, '.menuName');
 
+$(document).on({
+  mouseenter: function() {
+    var cssStyle, selectClass;
+    cssStyle = {
+      background: 'rgba(235,40,235,0.7)'
+    };
+    selectClass = $(this).attr('class');
+    console.log(selectClass);
+    $(this).css(cssStyle);
+    console.log($("#baseIcon").attr('class'));
+    $("#baseIcon").removeClass($("#baseIcon").attr('class')).addClass(selectClass);
+  },
+  mouseleave: function() {
+    $('.fa').removeAttr('style');
+  }
+}, '.fa-3x');
+
 $(document).ready(function() {
-  $(".base-icon").click(function(){
+  $("#baseIcon").click(function(){
     var htmlElement, offset;
     offset = $(this).offset();
     htmlElement = '<div id="mainMenu"><h4 id="webApplication" class="menuName">Web Application Icons</h4><h4 id="fileType" class="menuName">File Type Icons</h4><h4 id="spinner" class="menuName">Spinner Icons</h4></div>';
     $(this).after($(htmlElement).css({
       position: 'absolute',
-      left: offset.left - 200,
+      left: offset.left - 350,
       top: offset.top - 400,
       width: 300,
       height: 150,
@@ -78,7 +95,7 @@ $(document).ready(function() {
       background: 'rgba(240,240,240,0.7)'
     }));
   });
-  // $(".base-icon").hover(
+  // $("#baseIcon").hover(
   //   function () {
   //     $(this).after($('<ul id="mainMenu" class="list-unstyled"><li>Web Application Icons</li><li>File Type Icons</li><li>Spinner Icons</li></ul>'));
   //   },
